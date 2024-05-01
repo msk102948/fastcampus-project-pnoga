@@ -1,5 +1,6 @@
 package com.fastcampus.fastcampusprojectpnoga.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -51,6 +52,9 @@ public abstract class BaseEntity {
     @Column(nullable = false)
     @ColumnDefault("false")
     @Comment("삭제여부")
+    // 빌더 기능을 사용할 경우 초기화하는 값이 문제가 생길 수 있기 때문에 빌더 자체 내애서 초기화를 해줘야한다(빌드할 때 발생한 문제로 인해 추가)
+    // TODO: 빌드 어노테이션과 변수 초기화 문제에 대해서 추가적으로 공부 필요
+    @Builder.Default
     private boolean isDeleted = false;
 
     @Override
